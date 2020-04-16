@@ -1,20 +1,16 @@
 import TransactionsRepository from '../repositories/TransactionsRepository';
 import Transaction from '../models/Transaction';
 
-class CreateTransactionService {
+class GetAllTransactionService {
   private transactionsRepository: TransactionsRepository;
 
   constructor(transactionsRepository: TransactionsRepository) {
     this.transactionsRepository = transactionsRepository;
   }
 
-  public execute(transaction: Transaction): Transaction {
-    if (transaction === null) {
-      throw Error('Invalid Transaction');
-    }
-
-    return this.transactionsRepository.create(transaction);
+  public execute(): Transaction[] {
+    return this.transactionsRepository.all();
   }
 }
 
-export default CreateTransactionService;
+export default GetAllTransactionService;
