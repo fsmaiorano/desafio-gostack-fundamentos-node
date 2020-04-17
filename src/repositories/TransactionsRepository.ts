@@ -20,6 +20,13 @@ class TransactionsRepository {
 
   public create(transaction: Transaction): Transaction {
     this.transactions.push(transaction);
+
+    if (transaction.type === 'income') {
+      this.balance.income += transaction.value;
+    } else {
+      this.balance.outcome += transaction.value;
+    }
+
     return transaction;
   }
 }
