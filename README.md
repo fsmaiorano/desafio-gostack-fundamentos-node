@@ -4,7 +4,7 @@
 {
   "title": "Transaction",
   "value": 3000,
-  "type": "income" || "outcome"
+  "type": "income" or "outcome"
 }
 
 ### Rotas da aplicação
