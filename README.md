@@ -1,3 +1,12 @@
+### Dados de Entrada
+
+```json
+{
+  "title": "Transaction",
+  "value": 3000,
+  "type": "income" || "outcome"
+}
+
 ### Rotas da aplicação
 
 Agora que você já está com o template clonado, e pronto para continuar, você deve verificar os arquivos da pasta `src` e completar onde não possui código com o código para atingir os objetivos de cada rota.
