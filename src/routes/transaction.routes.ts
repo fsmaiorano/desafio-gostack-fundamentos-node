@@ -6,6 +6,7 @@ import Transaction from '../models/Transaction';
 import TransactionsRepository from '../repositories/TransactionsRepository';
 import CreateTransactionService from '../services/CreateTransactionService';
 import GetAllTransactionService from '../services/GetAllTransactionService';
+import GetBalanceTransactionService from '../services/GetBalanceTransactionService';
 
 const transactionRouter = Router();
 
@@ -17,7 +18,16 @@ transactionRouter.get('/', (request, response) => {
       transactionsRepository,
     );
 
-    return getAllTransactionService.execute();
+    var getBalanceTransactionService = new GetBalanceTransactionService(
+      transactionsRepository,
+    );
+
+    var transactions = getAllTransactionService.execute();
+    var balance = getBalanceTransactionService.execute(transactions);
+
+    var result = { transactions, balance };
+
+    return response.status(200).json(result);
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }

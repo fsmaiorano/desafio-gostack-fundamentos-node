@@ -1,6 +1,8 @@
 import TransactionsRepository from '../repositories/TransactionsRepository';
 import Transaction from '../models/Transaction';
 
+import GetBalanceTransactionService from './GetBalanceTransactionService';
+
 class GetAllTransactionService {
   private transactionsRepository: TransactionsRepository;
 
@@ -9,7 +11,13 @@ class GetAllTransactionService {
   }
 
   public execute(): Transaction[] {
-    return this.transactionsRepository.all();
+    var transactions = this.transactionsRepository.all();
+
+    if (transactions.length === 0) {
+      return transactions;
+    }
+
+    return transactions;
   }
 }
 
